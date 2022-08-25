@@ -7,20 +7,26 @@ public class GamblingSimulator {
         int initialStake = 100;
         int betAmount = 1;
         int win = 1;
-        int currentAmount = initialStake;
+        int currentAmount = 0;
+        int days = 20;
 
         System.out.println("\nInitial Stake = " + initialStake + "\t||\tBet Amount = " + betAmount);
 
-        int roll = (int)(Math.random() * 10) % 2;
-
         System.out.println();
-        if (roll == win){
-            System.out.println("You Won !!");
-            currentAmount = currentAmount + betAmount;
-        }else {
-            System.out.println("You Lost !!");
-            currentAmount = currentAmount - betAmount;
+
+        for (int i = 0; i < days; i++){
+            while(initialStake < 150 && initialStake > 50){
+                int roll = (int)(Math.random() * 10) % 2;
+                if (roll == win){
+                    System.out.println("You Won !!");
+                    initialStake = initialStake + betAmount;
+                }else {
+                    System.out.println("You Lost !!");
+                    initialStake = initialStake - betAmount;
+                }
+            }
+            currentAmount = currentAmount + initialStake;
         }
-        System.out.println("Amount Left = " + currentAmount);
+        System.out.println("Final Amount = " + currentAmount);
     }
 }
