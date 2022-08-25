@@ -11,16 +11,18 @@ public class GamblingSimulator {
 
         System.out.println("\nInitial Stake = " + initialStake + "\t||\tBet Amount = " + betAmount);
 
-        int roll = (int)(Math.random() * 10) % 2;
-
         System.out.println();
-        if (roll == win){
-            System.out.println("You Won !!");
-            currentAmount = currentAmount + betAmount;
-        }else {
-            System.out.println("You Lost !!");
-            currentAmount = currentAmount - betAmount;
+
+        while(currentAmount < 150 && currentAmount > 50){
+            int roll = (int)(Math.random() * 10) % 2;
+            if (roll == win){
+                System.out.println("You Won !!");
+                currentAmount = currentAmount + betAmount;
+            }else {
+                System.out.println("You Lost !!");
+                currentAmount = currentAmount - betAmount;
+            }
         }
-        System.out.println("Amount Left = " + currentAmount);
+        System.out.println("Final Amount = " + currentAmount);
     }
 }
